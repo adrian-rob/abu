@@ -1,5 +1,5 @@
 {
-  "name": "react-gen",
+  "name": "abu",
   "version": "0.0.2",
   "description": "React boilerplate generator CLI for Vite + Redux projects",
   "bin": {
