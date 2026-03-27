@@ -1,0 +1,21 @@
+{
+  "name": "react-gen",
+  "version": "1.0.0",
+  "description": "React boilerplate generator CLI for Vite + Redux projects",
+  "bin": {
+    "abu": "./gen"
+  },
+  "files": [
+    "gen",
+    "commands/"
+  ],
+  "keywords": [
+    "react",
+    "generator",
+    "boilerplate",
+    "cli",
+    "redux",
+    "vite"
+  ],
+  "license": "MIT"
+}

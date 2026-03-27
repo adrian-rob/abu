@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+
+show_help() {
+  cat <<EOF
+⚛️  abu — React Boilerplate CLI
+
+Usage:
+  abu <command> <n> [options]
+
+Commands:
+  component   Create a component in src/show/components/    (alias: c)
+  page        Create a page in src/show/pages/              (alias: p)
+
+Options:
+  --connect       Wrap with Redux connect (index.ts + view.tsx)
+  --<scope>       (pages only) Target subfolder, e.g. --public, --session, --admin
+                  Defaults to 'shared' if no scope provided
+
+Examples:
+  abu component MyButton
+  abu c MyButton --connect
+  abu page Login --public
+  abu p Dashboard --session --connect
+  abu page Settings --admin
+
+EOF
+}
+
+COMMAND="${1:-}"
+shift 2>/dev/null || true
+
+case "$COMMAND" in
+  component|c)  "$SCRIPT_DIR/commands/component.sh" "$@" ;;
+  page|p)       "$SCRIPT_DIR/commands/page.sh" "$@" ;;
+  help|--help|-h|"") show_help ;;
+  *) echo "Unknown command: $COMMAND"; echo "Run 'abu help' for usage."; exit 1 ;;
+esac
