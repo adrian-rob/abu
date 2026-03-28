@@ -50,15 +50,32 @@ abu locale toast
 abu l accessPoints
 ```
 
-Creates `<name>.json` in every language folder under `src/process/locales/` and updates each folder's `index.ts` (imports sorted by length, exports sorted alphabetically).
+Creates `<n>.json` in every language folder under `src/process/locales/` and updates each folder's `index.ts` (imports sorted by length, exports sorted alphabetically).
 
 > Language folders (e.g. `en/`, `sr/`, `de/`) must already exist.
 
+### Reducers
+
+```bash
+# Create a Redux Toolkit reducer
+abu reducer dashboard
+abu r notifications
+```
+
+Creates a reducer slice in `src/process/reducers/<n>/index.ts` and:
+
+- Updates the reducers barrel `src/process/reducers/index.ts`
+- Adds the import to `src/process/redux/index.ts`
+- Adds the reducer to `combineReducers`
+- Adds the reset entry to `rootReducer`
+
+> Please review the store file after generation to ensure correct placement.
+
 ## What gets generated
 
-**Components** create files in `src/show/components/<Name>/` and update the barrel `src/show/components/index.ts` (imports sorted by length, exports sorted alphabetically).
+**Components** create files in `src/show/components/<n>/` and update the barrel `src/show/components/index.ts` (imports sorted by length, exports sorted alphabetically).
 
-**Pages** do the above in `src/show/pages/<scope>/<Name>/`, plus:
+**Pages** do the above in `src/show/pages/<scope>/<n>/`, plus:
 
 - Add a path constant to `src/show/navigator/paths.ts`
 - Scaffold a route entry in `src/show/navigator/routes.tsx`
@@ -67,6 +84,8 @@ Creates `<name>.json` in every language folder under `src/process/locales/` and 
 
 **Locales** create an empty JSON file in every language folder and update each folder's `index.ts` barrel.
 
+**Reducers** create a Redux Toolkit slice and wire it into the store automatically.
+
 ## Aliases
 
 | Command     | Alias |
@@ -74,3 +93,4 @@ Creates `<name>.json` in every language folder under `src/process/locales/` and 
 | `component` | `c`   |
 | `page`      | `p`   |
 | `locale`    | `l`   |
+| `reducer`   | `r`   |

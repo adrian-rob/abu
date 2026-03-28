@@ -14,6 +14,7 @@ Commands:
   component   Create a component in src/show/components/    (alias: c)
   page        Create a page in src/show/pages/              (alias: p)
   locale      Create a locale JSON in all language folders   (alias: l)
+  reducer     Create a Redux Toolkit reducer                 (alias: r)
 
 Options:
   --connect       Wrap with Redux connect (index.ts + view.tsx)
@@ -36,6 +37,7 @@ for arg in "$@"; do
     component|c)  COMMAND="component" ;;
     page|p)       COMMAND="page" ;;
     locale|l)     COMMAND="locale" ;;
+    reducer|r)    COMMAND="reducer" ;;
     help|--help|-h) show_help; exit 0 ;;
     *) REMAINING+=("$arg") ;;
   esac
@@ -50,4 +52,5 @@ case "$COMMAND" in
   component) "$SCRIPT_DIR/commands/component.sh" "${REMAINING[@]}" ;;
   page)      "$SCRIPT_DIR/commands/page.sh" "${REMAINING[@]}" ;;
   locale)    "$SCRIPT_DIR/commands/locale.sh" "${REMAINING[@]}" ;;
+  reducer)   "$SCRIPT_DIR/commands/reducer.sh" "${REMAINING[@]}" ;;
 esac
