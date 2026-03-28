@@ -1,54 +1,60 @@
-# react-gen
+# abu
 
 React boilerplate generator CLI for Vite + Redux projects.
 
 ## Installation
 
 ```bash
-yarn add -D git+https://github.com/<your-username>/react-gen.git
-```
+# Global (use abu anywhere)
+npm install -g git+https://github.com/adrian-rob/abu.git
 
-## Setup
-
-Add to your `package.json` scripts:
-
-```json
-{
-  "scripts": {
-    "abu": "abu"
-  }
-}
+# Per project
+yarn add -D git+https://github.com/adrian-rob/abu.git
 ```
 
 ## Usage
+
+Arguments can be in any order.
 
 ### Components
 
 ```bash
 # Basic component → src/show/components/MyButton/index.tsx
-yarn abu component MyButton
+abu component MyButton
 
 # Redux connected → src/show/components/MyButton/index.ts + view.tsx
-yarn abu c MyButton --connect
+abu c MyButton --connect
 ```
 
 ### Pages
 
 ```bash
 # Public page
-yarn abu page Login --public
+abu page Login --public
 
 # Session page with Redux connect
-yarn abu p Dashboard --session --connect
+abu p Dashboard --session --connect
 
 # Custom scope (creates the folder if needed)
-yarn abu page Settings --admin
+abu page Settings --admin
 
 # No flag → defaults to 'shared'
-yarn abu page NotFound
+abu page NotFound
 ```
 
-### What gets generated
+### Locales
+
+```bash
+# Create a locale JSON file in all language folders
+abu locale toast
+abu l accessPoints
+```
+
+Creates `<name>.json` in every language folder under `src/process/locales/` and updates each folder's `index.ts` (imports sorted by length, exports sorted alphabetically).
+
+> Language folders (e.g. `en/`, `sr/`, `de/`) must already exist.
+
+## What gets generated
 
 **Components** create files in `src/show/components/<Name>/` and update the barrel `src/show/components/index.ts` (imports sorted by length, exports sorted alphabetically).
 
@@ -59,9 +65,12 @@ yarn abu page NotFound
 
 > **Note:** Route entries are scaffolded but not fully wired. Review `routes.tsx` to place each route in the correct layout.
 
+**Locales** create an empty JSON file in every language folder and update each folder's `index.ts` barrel.
+
 ## Aliases
 
 | Command     | Alias |
 | ----------- | ----- |
 | `component` | `c`   |
 | `page`      | `p`   |
+| `locale`    | `l`   |

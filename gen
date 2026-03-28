@@ -13,6 +13,7 @@ Usage:
 Commands:
   component   Create a component in src/show/components/    (alias: c)
   page        Create a page in src/show/pages/              (alias: p)
+  locale      Create a locale JSON in all language folders   (alias: l)
 
 Options:
   --connect       Wrap with Redux connect (index.ts + view.tsx)
@@ -34,6 +35,7 @@ for arg in "$@"; do
   case "$arg" in
     component|c)  COMMAND="component" ;;
     page|p)       COMMAND="page" ;;
+    locale|l)     COMMAND="locale" ;;
     help|--help|-h) show_help; exit 0 ;;
     *) REMAINING+=("$arg") ;;
   esac
@@ -47,4 +49,5 @@ fi
 case "$COMMAND" in
   component) "$SCRIPT_DIR/commands/component.sh" "${REMAINING[@]}" ;;
   page)      "$SCRIPT_DIR/commands/page.sh" "${REMAINING[@]}" ;;
+  locale)    "$SCRIPT_DIR/commands/locale.sh" "${REMAINING[@]}" ;;
 esac
