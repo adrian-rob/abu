@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# INIT_CWD is set by npm/yarn to the directory where install was run
-HOST_PKG="${INIT_CWD:-.}/package.json"
-
-if [ ! -f "$HOST_PKG" ]; then
+# Skip if installed globally
+if [ -z "$INIT_CWD" ] || [ ! -f "${INIT_CWD}/package.json" ]; then
   exit 0
 fi
+
+HOST_PKG="${INIT_CWD}/package.json"
 
 # Check if "abu" script already exists
 if grep -q '"abu"' "$HOST_PKG" 2>/dev/null; then
