@@ -1,17 +1,13 @@
 {
-  "name": "abu",
-  "version": "0.0.3",
+  "name": "react-gen",
+  "version": "0.0.4",
   "description": "React boilerplate generator CLI for Vite + Redux projects",
   "bin": {
     "abu": "./gen"
   },
-  "scripts": {
-    "postinstall": "node ./postinstall.js"
-  },
   "files": [
     "gen",
-    "commands/",
-    "postinstall.js"
+    "commands/"
   ],
   "keywords": [
     "react",
