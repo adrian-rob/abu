@@ -6,12 +6,12 @@
     "abu": "./gen"
   },
   "scripts": {
-    "postinstall": "bash ./postinstall.sh"
+    "postinstall": "node ./postinstall.js"
   },
   "files": [
     "gen",
     "commands/",
-    "postinstall.sh"
+    "postinstall.js"
   ],
   "keywords": [
     "react",
