@@ -40,7 +40,7 @@ import { updateProps } from '../shared';
 
 interface ${PASCAL_NAME}State {}
 
-const initialState = {};
+const initialState: ${PASCAL_NAME}State = {};
 
 const ${NAME}Slice = createSlice({
   name: '${NAME}',
