@@ -1,13 +1,13 @@
 {
   "name": "abu",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "React boilerplate generator CLI for Vite + Redux projects",
   "bin": {
-    "abu": "./gen"
+    "abu": "./bin/abu.js"
   },
   "files": [
-    "gen",
-    "commands/"
+    "bin/",
+    "src/"
   ],
   "keywords": [
     "react",
