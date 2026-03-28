@@ -53,6 +53,7 @@ yarn abu page NotFound
 **Components** create files in `src/show/components/<Name>/` and update the barrel `src/show/components/index.ts` (imports sorted by length, exports sorted alphabetically).
 
 **Pages** do the above in `src/show/pages/<scope>/<Name>/`, plus:
+
 - Add a path constant to `src/show/navigator/paths.ts`
 - Scaffold a route entry in `src/show/navigator/routes.tsx`
 
@@ -61,6 +62,6 @@ yarn abu page NotFound
 ## Aliases
 
 | Command     | Alias |
-|-------------|-------|
+| ----------- | ----- |
 | `component` | `c`   |
 | `page`      | `p`   |

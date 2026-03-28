@@ -19,22 +19,32 @@ Options:
   --<scope>       (pages only) Target subfolder, e.g. --public, --session, --admin
                   Defaults to 'shared' if no scope provided
 
-Examples:
-  abu component MyButton
+Arguments can be in any order:
   abu c MyButton --connect
-  abu page Login --public
-  abu p Dashboard --session --connect
-  abu page Settings --admin
+  abu --connect c MyButton
+  abu MyButton --connect c
 
 EOF
 }
 
-COMMAND="${1:-}"
-shift 2>/dev/null || true
+COMMAND=""
+REMAINING=()
+
+for arg in "$@"; do
+  case "$arg" in
+    component|c)  COMMAND="component" ;;
+    page|p)       COMMAND="page" ;;
+    help|--help|-h) show_help; exit 0 ;;
+    *) REMAINING+=("$arg") ;;
+  esac
+done
+
+if [ -z "$COMMAND" ]; then
+  show_help
+  exit 0
+fi
 
 case "$COMMAND" in
-  component|c)  "$SCRIPT_DIR/commands/component.sh" "$@" ;;
-  page|p)       "$SCRIPT_DIR/commands/page.sh" "$@" ;;
-  help|--help|-h|"") show_help ;;
-  *) echo "Unknown command: $COMMAND"; echo "Run 'abu help' for usage."; exit 1 ;;
+  component) "$SCRIPT_DIR/commands/component.sh" "${REMAINING[@]}" ;;
+  page)      "$SCRIPT_DIR/commands/page.sh" "${REMAINING[@]}" ;;
 esac
